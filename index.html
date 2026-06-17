@@ -1,0 +1,916 @@
+
+bash
+
+cat > /home/claude/MMA411_Bioethics_Law.html << 'HTMLEOF'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MMA 411 · Bioethics & Law</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --bg2: #161b22;
+    --bg3: #1c2330;
+    --card: #1e2736;
+    --accent: #4f9cf9;
+    --accent2: #38d9a9;
+    --accent3: #f06595;
+    --accent4: #ffd43b;
+    --accent5: #da77f2;
+    --text: #e6edf3;
+    --text2: #8b949e;
+    --text3: #6e7681;
+    --border: rgba(255,255,255,0.08);
+    --border2: rgba(255,255,255,0.14);
+    --red: #f85149;
+    --green: #3fb950;
+    --radius: 10px;
+    --radius-lg: 16px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; font-size: 15px; }
+  header { background: #0a1628; border-bottom: 1px solid var(--border2); padding: 0 2rem; position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+  .logo { font-size: 13px; font-weight: 700; color: var(--accent); letter-spacing: 0.05em; }
+  .logo span { color: var(--text2); font-weight: 400; }
+  nav { display: flex; gap: 4px; flex-wrap: wrap; }
+  nav a { color: var(--text2); text-decoration: none; font-size: 12px; padding: 5px 10px; border-radius: 6px; transition: all 0.2s; border: 1px solid transparent; }
+  nav a:hover { color: var(--text); background: var(--bg2); border-color: var(--border); }
+  .hero { padding: 4rem 2rem 3rem; max-width: 900px; margin: 0 auto; text-align: center; }
+  .hero-badge { display: inline-block; background: rgba(79,156,249,0.1); border: 1px solid rgba(79,156,249,0.3); color: var(--accent); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 14px; border-radius: 20px; margin-bottom: 1.5rem; text-transform: uppercase; }
+  .hero h1 { font-size: clamp(2rem,5vw,3.2rem); font-weight: 800; line-height: 1.15; background: linear-gradient(135deg,#e6edf3 0%,#4f9cf9 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.75rem; }
+  .hero p { color: var(--text2); font-size: 1rem; max-width: 600px; margin: 0 auto 2rem; }
+  .hero-stats { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 1.8rem; font-weight: 800; color: var(--accent); }
+  .stat-lbl { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.05em; }
+  .progress-bar-wrap { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem 2rem; margin: 2rem; display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+  .progress-bar-wrap span { font-size: 13px; color: var(--text2); min-width: 100px; }
+  .bar { flex: 1; min-width: 200px; height: 6px; background: var(--bg3); border-radius: 3px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 3px; transition: width 1s ease; background: linear-gradient(90deg,#4f9cf9,#38d9a9); }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+  .sec-header { display: flex; align-items: center; gap: 1rem; margin: 3rem 0 1.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); }
+  .sec-num { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; }
+  .sec-header h2 { font-size: 1.2rem; font-weight: 700; }
+  .sec-header p { font-size: 12px; color: var(--text2); }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: 1rem; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem 1.5rem; transition: border-color 0.2s,transform 0.2s; }
+  .card:hover { border-color: var(--border2); transform: translateY(-2px); }
+  .card-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; display: inline-block; margin-bottom: 0.75rem; }
+  .card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .card p, .card li { font-size: 13.5px; color: var(--text2); line-height: 1.65; }
+  .card ul { padding-left: 1.1rem; }
+  .card li { margin-bottom: 0.3rem; }
+  .card strong { color: var(--text); }
+  .highlight { background: rgba(79,156,249,0.08); border-left: 3px solid var(--accent); border-radius: 0 6px 6px 0; padding: 0.6rem 0.75rem; margin-top: 0.75rem; font-size: 13px; color: var(--text2); }
+  .principles-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 0.75rem; }
+  .prin-box { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; border-top: 3px solid transparent; }
+  .prin-box h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .prin-box p { font-size: 12.5px; color: var(--text2); }
+  .article-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 0.75rem; }
+  .art-item { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; }
+  .art-num { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text3); margin-bottom: 0.3rem; }
+  .art-item h4 { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .art-item p { font-size: 12.5px; color: var(--text2); }
+  .case-box { background: rgba(79,156,249,0.04); border: 1px solid rgba(79,156,249,0.2); border-radius: var(--radius-lg); padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+  .case-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); text-transform: uppercase; margin-bottom: 0.5rem; }
+  .case-box h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .case-box p { font-size: 13px; color: var(--text2); margin-bottom: 0.5rem; }
+  .issues { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.75rem; }
+  .issue-tag { font-size: 11px; padding: 3px 10px; border-radius: 20px; background: rgba(255,255,255,0.06); border: 1px solid var(--border); color: var(--text2); }
+  .q-item { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; margin-bottom: 0.75rem; }
+  .q-text { font-size: 14px; font-weight: 600; margin-bottom: 0.75rem; }
+  .q-opts { display: flex; flex-direction: column; gap: 0.4rem; }
+  .q-opt { font-size: 13px; padding: 0.5rem 0.75rem; border-radius: 6px; border: 1px solid var(--border); background: var(--bg3); cursor: pointer; transition: all 0.15s; color: var(--text2); }
+  .q-opt:hover { border-color: var(--border2); color: var(--text); }
+  .q-opt.correct { border-color: var(--green); background: rgba(63,185,80,0.1); color: var(--green); }
+  .q-opt.wrong { border-color: var(--red); background: rgba(248,81,73,0.08); color: var(--red); }
+  .q-opt.reveal-correct { border-color: var(--green); background: rgba(63,185,80,0.07); color: var(--green); }
+  .q-explain { margin-top: 0.75rem; font-size: 12.5px; color: var(--text2); background: var(--bg3); border-radius: 6px; padding: 0.6rem 0.75rem; display: none; border-left: 3px solid var(--accent); }
+  .score-display { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.5rem; margin-bottom: 1rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+  .score-num { font-size: 1.5rem; font-weight: 800; color: var(--accent); }
+  .btn { padding: 8px 18px; border-radius: 8px; border: 1px solid var(--border2); background: var(--bg3); color: var(--text); font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.15s; }
+  .btn:hover { background: var(--bg2); border-color: var(--accent); color: var(--accent); }
+  .tab-bar { display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
+  .tab { padding: 6px 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg2); color: var(--text2); font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.15s; }
+  .tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+  .def-grid { display: flex; flex-direction: column; gap: 0.5rem; }
+  .def-item { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.9rem 1.25rem; display: grid; grid-template-columns: 160px 1fr; gap: 1rem; align-items: start; }
+  .def-term { font-size: 13px; font-weight: 700; color: var(--accent); }
+  .def-body { font-size: 13px; color: var(--text2); }
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before { content: ''; position: absolute; left: 7px; top: 0; bottom: 0; width: 2px; background: var(--border2); }
+  .tl-item { position: relative; margin-bottom: 1.25rem; }
+  .tl-dot { width: 16px; height: 16px; border-radius: 50%; position: absolute; left: -2rem; top: 4px; border: 2px solid var(--bg); }
+  .tl-item h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.25rem; }
+  .tl-item p { font-size: 13px; color: var(--text2); }
+  .kenya-box { background: rgba(56,217,169,0.05); border: 1px solid rgba(56,217,169,0.2); border-radius: var(--radius-lg); padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+  .k-title { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--accent2); text-transform: uppercase; margin-bottom: 0.5rem; }
+  .kenya-box h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .kenya-box p { font-size: 13px; color: var(--text2); margin-bottom: 0.4rem; }
+  footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; color: var(--text3); font-size: 12px; }
+  @media (max-width:600px) { header { padding: 0 1rem; } .def-item { grid-template-columns: 1fr; } .hero { padding: 2rem 1rem 1.5rem; } .container { padding: 0 1rem 3rem; } nav { display: none; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">MMA 411 <span>· Bioethics &amp; Law</span></div>
+  <nav>
+    <a href="#foundations">Foundations</a>
+    <a href="#principles">Principles</a>
+    <a href="#topics">Key Topics</a>
+    <a href="#chapters">Code</a>
+    <a href="#kenya">Kenya</a>
+    <a href="#glossary">Glossary</a>
+    <a href="#cases">Cases</a>
+    <a href="#quiz">Quiz</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="hero-badge">MMA 411 · Exam Study Guide</div>
+  <h1>Bioethics &amp; Law</h1>
+  <p>Moral &amp; Ethical Reasoning Among Health Professionals in Kenya — Comprehensive notes covering all examinable topics, key legislation, landmark cases, and ethical principles.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">21</div><div class="stat-lbl">Code Chapters</div></div>
+    <div class="stat"><div class="stat-num">8</div><div class="stat-lbl">Core Topics</div></div>
+    <div class="stat"><div class="stat-num">40%</div><div class="stat-lbl">CATs Weight</div></div>
+    <div class="stat"><div class="stat-num">15+</div><div class="stat-lbl">Quiz Questions</div></div>
+  </div>
+</div>
+
+<div class="progress-bar-wrap">
+  <span>Study Progress</span>
+  <div class="bar"><div class="bar-fill" id="prog-fill" style="width:0%"></div></div>
+  <span id="prog-text" style="font-size:13px;color:#8b949e;">0% complete</span>
+  <button class="btn" onclick="resetProgress()">Reset</button>
+</div>
+
+<div class="container">
+
+<div class="sec-header" id="foundations">
+  <div class="sec-num" style="background:rgba(79,156,249,0.15);color:#4f9cf9;">01</div>
+  <div><h2>Course Foundations</h2><p>Course overview, objectives, and core reading materials</p></div>
+</div>
+<div class="cards">
+  <div class="card">
+    <div class="card-tag" style="background:rgba(79,156,249,0.12);color:#4f9cf9;">Course Identity</div>
+    <h3>MMA 411: Bioethics &amp; Law</h3>
+    <p>Focus: Legal, ethical and policy dimensions of modern lab medicine and biotechnology, with emphasis on:</p>
+    <ul style="margin-top:0.5rem;">
+      <li>Patient rights and reproductive technology</li>
+      <li>Research ethics and biotechnology</li>
+      <li>End-of-life decisions</li>
+      <li>Clinical ethics &amp; public health law</li>
+    </ul>
+    <div class="highlight">Assessment: 40% Continuous Assessment Tests + 60% End-of-Year Exam</div>
+  </div>
+  <div class="card">
+    <div class="card-tag" style="background:rgba(56,217,169,0.12);color:#38d9a9;">Learning Objectives</div>
+    <h3>What You Must Be Able To Do</h3>
+    <ul>
+      <li>Analyse <strong>landmark court cases</strong> and legal precedents in lab medicine and biotech</li>
+      <li>Understand the <strong>legal framework</strong> governing health professionals in Kenya</li>
+      <li>Apply <strong>practical skills</strong> in medico-legal decision-making</li>
+      <li>Navigate <strong>ethical dilemmas</strong> in clinical and research settings</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-tag" style="background:rgba(240,101,149,0.12);color:#f06595;">Key Topics (Examinable)</div>
+    <h3>Primary Areas of Focus</h3>
+    <ul>
+      <li>Informed Consent</li>
+      <li>Genetic Privacy and Health Records</li>
+      <li>Allocation of Health Resources</li>
+      <li>Clinical Ethics and Public Health Law</li>
+      <li>Research Ethics (Bioethics)</li>
+      <li>End-of-Life Care Ethics</li>
+      <li>Conscientious Objection</li>
+      <li>Medical Secrecy and Confidentiality</li>
+    </ul>
+  </div>
+</div>
+
+<div class="sec-header" id="principles">
+  <div class="sec-num" style="background:rgba(218,119,242,0.15);color:#da77f2;">02</div>
+  <div><h2>Ethical Foundations and Principles</h2><p>The pillars underpinning biomedical ethics</p></div>
+</div>
+<div class="cards">
+  <div class="card" style="border-top:3px solid #4f9cf9;">
+    <div class="card-tag" style="background:rgba(79,156,249,0.12);color:#4f9cf9;">Beauchamp and Childress</div>
+    <h3>The Four Principles of Biomedical Ethics</h3>
+    <div class="principles-grid" style="margin-top:0.75rem;">
+      <div class="prin-box" style="border-top-color:#4f9cf9;">
+        <h4 style="color:#4f9cf9;">Autonomy</h4>
+        <p>Right of patients to make informed, voluntary decisions about their own healthcare without coercion</p>
+      </div>
+      <div class="prin-box" style="border-top-color:#38d9a9;">
+        <h4 style="color:#38d9a9;">Beneficence</h4>
+        <p>Obligation to act in the patient's best interest — to "do good" and promote wellbeing</p>
+      </div>
+      <div class="prin-box" style="border-top-color:#f06595;">
+        <h4 style="color:#f06595;">Non-Maleficence</h4>
+        <p>"First, do no harm." Avoid causing unnecessary injury, pain, or harm to patients</p>
+      </div>
+      <div class="prin-box" style="border-top-color:#ffd43b;">
+        <h4 style="color:#ffd43b;">Justice</h4>
+        <p>Fair distribution of healthcare resources, benefits, risks, and costs across all populations</p>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-tag" style="background:rgba(255,212,59,0.12);color:#ffd43b;">Historical Documents</div>
+    <h3>Foundational Ethical Codes</h3>
+    <div class="timeline" style="margin-top:0.75rem;">
+      <div class="tl-item"><div class="tl-dot" style="background:#ffd43b;"></div><h4>Hippocratic Oath (~400 BC)</h4><p>Do no harm, maintain confidentiality, serve the patient. Core duty-based framework.</p></div>
+      <div class="tl-item"><div class="tl-dot" style="background:#4f9cf9;"></div><h4>Nuremberg Code (1947)</h4><p>Voluntary informed consent is "absolutely essential." Arose from Nazi medical trial atrocities.</p></div>
+      <div class="tl-item"><div class="tl-dot" style="background:#38d9a9;"></div><h4>Declaration of Helsinki (1964)</h4><p>World Medical Association — ethical principles for human medical research; welfare over scientific interest.</p></div>
+      <div class="tl-item"><div class="tl-dot" style="background:#f06595;"></div><h4>Belmont Report (1979)</h4><p>US Commission: Respect for Persons, Beneficence, Justice — foundation for modern research ethics.</p></div>
+      <div class="tl-item"><div class="tl-dot" style="background:#da77f2;"></div><h4>Code of Medical Ethics (OMC 2011)</h4><p>Your core reading — 21 chapters covering all dimensions of medical ethics and professional conduct.</p></div>
+    </div>
+  </div>
+</div>
+<div style="height:1rem;"></div>
+<div class="cards">
+  <div class="card">
+    <div class="card-tag" style="background:rgba(79,156,249,0.12);color:#4f9cf9;">Deontology (Kant)</div>
+    <h3>Duty-Based Ethics</h3>
+    <p>Actions are intrinsically right or wrong regardless of consequences. Categorical Imperative: act only on principles you could will to be universal law. Underpins informed consent, truth-telling, and patient rights.</p>
+  </div>
+  <div class="card">
+    <div class="card-tag" style="background:rgba(56,217,169,0.12);color:#38d9a9;">Consequentialism (Mill)</div>
+    <h3>Outcome-Based Ethics</h3>
+    <p>Utilitarianism: the right action produces the greatest good for the greatest number. Underpins public health policy, resource allocation, and triage decisions in healthcare.</p>
+  </div>
+  <div class="card">
+    <div class="card-tag" style="background:rgba(240,101,149,0.12);color:#f06595;">Virtue Ethics (Aristotle)</div>
+    <h3>Character-Based Ethics</h3>
+    <p>Focus on virtues: honesty, compassion, integrity, courage, prudence. A good doctor embodies virtuous character, not merely follows rules. The Prayer of Maimonides reflects this tradition.</p>
+  </div>
+</div>
+
+<div class="sec-header" id="topics">
+  <div class="sec-num" style="background:rgba(56,217,169,0.15);color:#38d9a9;">03</div>
+  <div><h2>Key Examinable Topics In-Depth</h2><p>Click a topic to expand its full notes</p></div>
+</div>
+<div class="tab-bar">
+  <div class="tab active" onclick="showTab('informed-consent',this)">Informed Consent</div>
+  <div class="tab" onclick="showTab('confidentiality',this)">Confidentiality</div>
+  <div class="tab" onclick="showTab('genetics',this)">Genetic Privacy</div>
+  <div class="tab" onclick="showTab('resources',this)">Resource Allocation</div>
+  <div class="tab" onclick="showTab('endoflife',this)">End of Life</div>
+  <div class="tab" onclick="showTab('research',this)">Research Ethics</div>
+  <div class="tab" onclick="showTab('objection',this)">Consci. Objection</div>
+  <div class="tab" onclick="showTab('reproduction',this)">Reproduction</div>
+</div>
+
+<div class="tab-content active" id="tab-informed-consent">
+  <div class="cards">
+    <div class="card">
+      <div class="card-tag" style="background:rgba(79,156,249,0.12);color:#4f9cf9;">Definition</div>
+      <h3>What is Informed Consent?</h3>
+      <p>A patient's voluntary, competent agreement to a medical procedure or participation in research, given after receiving adequate information. It is a <em>process</em>, not merely a signature on a form.</p>
+      <div class="highlight">Art. 16 (Code of Medical Ethics): "Informing the patient is not a bureaucratic act but a clinical act." It must be done by the responsible physician after a precise clinical judgment.</div>
+    </div>
+    <div class="card">
+      <div class="card-tag" style="background:rgba(56,217,169,0.12);color:#38d9a9;">3 Core Elements</div>
+      <h3>Components of Valid Consent</h3>
+      <ul>
+        <li><strong>Disclosure:</strong> Adequate information about diagnosis, procedure, risks, benefits, and alternatives</li>
+        <li><strong>Capacity:</strong> Patient must be mentally competent to understand and decide</li>
+        <li><strong>Voluntariness:</strong> Decision must be free from coercion, manipulation, or undue influence</li>
+      </ul>
+      <div class="highlight">Consent is usually expressed verbally and noted in the medical history. Written consent required when measures pose significant risk (Art. 16.2).</div>
+    </div>
+    <div class="card">
+      <div class="card-tag" style="background:rgba(240,101,149,0.12);color:#f06595;">Special Situations</div>
+      <h3>Consent Exceptions and Modifications</h3>
+      <ul>
+        <li><strong>Emergencies:</strong> Treatment may proceed without consent to preserve life (Art. 13.3)</li>
+        <li><strong>Incompetent adults:</strong> Consent from legal representative or family (Art. 13.1)</li>
+        <li><strong>Minors under 16:</strong> Parents must be informed and consent required for risky acts (Art. 14.3)</li>
+        <li><strong>Ages 16–18:</strong> Parents informed, their opinion taken into account (Art. 14.3)</li>
+        <li><strong>Right to refuse:</strong> Patients may refuse; must be documented with consequences explained (Art. 12.2)</li>
+        <li><strong>Hunger strike:</strong> Doctor must inform of risks but respect the choice (Art. 12.4)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-tag" style="background:rgba(255,212,59,0.12);color:#ffd43b;">Research Context (Art. 59)</div>
+      <h3>Informed Consent in Research</h3>
+      <p>Participants must be informed of:</p>
+      <ul>
+        <li>Nature and purpose of research</li>
+        <li>Methods and procedures</li>
+        <li>Anticipated benefits and potential risks</li>
+        <li>Right to withdraw freely at any time without penalty</li>
+      </ul>
+      <div class="highlight">Nuremberg Code: voluntary consent is "absolutely essential" — non-negotiable regardless of any claimed public or scientific benefit.</div>
+    </div>
+  </div>
+</div>
+
+<div class="tab-content" id="tab-confidentiality">
+  <div class="cards">
+    <div class="card">
+      <div class="card-tag" style="background:rgba(79,156,249,0.12);color:#4f9cf9;">Foundation (Art. 27)</div>
+      <h3>Medical Secrecy and Confidentiality</h3>
+      <p>Medical secrecy is a pillar of the doctor-patient relationship and mutual trust. Covers everything revealed by the patient, observations, deductions, and medical record contents.</p>
+      <div class="highlight">The patient's death does NOT relieve the physician of the duty of professional secrecy (Art. 28.5).</div>
+    </div>
+    <div class="card">
+      <div class="card-tag" style="background:rgba(248,81,73,0.12);color:#f85149;">Exceptions (Art. 30)</div>
+      <h3>When Confidentiality May Be Broken</h3>
+      <ul>
+        <li>Notifiable diseases — public health obligation</li>
+        <li>Certificates of birth and death</li>
+        <li>Risk of injury to the patient, others, or collective danger</li>
+        <li>Cases of abuse: children, elderly, mentally disabled, sexual assault</li>
+        <li>When doctor is called to testify in disciplinary proceedings</li>
+        <li>When acting as medical examiner or coroner (by law)</li>
+        <li>Injury reports to the judge when attending an injured person</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-tag" style="background:rgba(56,217,169,0.12);color:#38d9a9;">Medical Records (Art. 19)</div>
+      <h3>Patient Records Ethics</h3>
+      <ul>
+        <li>Records may be used for scientific/educational purposes with strict confidentiality</li>
+        <li>Electronic records ethical only if confidentiality is guaranteed</li>
+        <li>Access to deceased patient records: family members only, unless patient forbade it</li>
+        <li>Patient has the right to access their own records and diagnostic tests</li>
+        <li>Subjective annotations by the doctor are the doctor's exclusive property</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-tag" style="background:rgba(218,119,242,0.12);color:#da77f2;">Team Medicine (Art. 29)</div>
+      <h3>Confidentiality in Clinical Teams</h3>
+      <ul>
+        <li>Each physician individually has the duty to preserve patient confidentiality</li>
+        <li>Collaborators (health and non-health) must maintain absolute discretion</li>
+        <li>Reasonable justification needed before sharing information between physicians</li>
+        <li>Medical director must ensure controls for privacy and confidentiality (Art. 28.1)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tab-content" id="tab-genetics">
+  <div class="cards">
+    <div class="card">
+      <div class="card-tag" style="background:rgba(79,156,249,0.12);color:#4f9cf9;">Core Principles (Art. 58)</div>
+      <h3>Genetic Privacy</h3>
+      <ul>
+        <li>Biological samples analysed only for intended purpose with patient consent</li>
+        <li>If used for another purpose — explicit new consent required</li>
+        <li>Genetic data must be kept secret; patient owns it, doctor is custodian</li>
+        <li>Genetic data must NEVER be used as a discriminatory element</li>
+        <li>DNA samples for identification from reliable genomic regions</li>
+        <li>Parenthood tests require consent of all parties</li>
+      </ul>
+      <div class="highlight">Art. 58.7: DNA information is not only owned by the donor — it is shared with family members. Creates unique ethical obligations.</div>
+    </div>
+    <div class="card">
+      <div class="card-tag" style="background:rgba(248,81,73,0.12);color:#f85149;">Prohibited Uses (Art. 54)</div>
+      <h3>Unethical Genetic Testing</h3>
+      <ul>
+        <li>Genetic testing for eugenic purposes — not ethically acceptable</li>
+        <li>Testing for insurance underwriting — prohibited</li>
+        <li>Testing generating employment discrimination — prohibited</li>
+        <li>Human cloning — doctors must never participate (Art. 53.2)</li>
+        <li>Creating embryos solely for experimental purposes — unethical</li>
+        <li>Non-therapeutic embryo/fetal manipulation — unethical</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-tag" style="background:rgba(56,217,169,0.12);color:#38d9a9;">Prenatal Testing (Art. 54)</div>
+      <h3>Prenatal Genetic Testing Ethics</h3>
+      <p>Before any prenatal test, a specialist must thoroughly inform the couple about:</p>
+      <ul>
+        <li>Predictive value and reliability of the test</li>
+        <li>Consequences of diagnosed genetic disease for fetus and future offspring</li>
+        <li>For intrauterine tests: risks to both mother and fetus</li>
+        <li>Must ensure no discriminatory use of results</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-tag" style="background:rgba(255,212,59,0.12);color:#ffd43b;">Biotechnology Context</div>
+      <h3>Modern Biotech Ethical Issues</h3>
+      <ul>
+        <li><strong>CRISPR/Gene Editing:</strong> "Not everything technically feasible is ethically acceptable" (Art. 51.4)</li>
+        <li><strong>Pharmacogenomics:</strong> Tailored medicine raises equity and privacy questions</li>
+        <li><strong>Biobanks:</strong> Anonymisation required for research use of stored samples</li>
+        <li><strong>AI in diagnostics:</strong> Data privacy and bias considerations</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tab-content" id="tab-resources">
+  <div class="cards">
+    <div class="card">
+      <div class="card-tag" style="background:rgba(79,156,249,0.12);color:#4f9cf9;">The Problem</div>
+      <h3>Allocation of Health Resources</h3>
+      <p>Healthcare resources are finite. Allocation decisions must balance competing ethical demands: need, efficiency, equity, and rights-based approaches.</p>
+      <div class="highlight">Art. 7.4: Physicians must seek highest efficiency of their work and optimal use of resources offered by society. Art. 23.4: Doctors with management roles act guided by common good and equity.</div>
+    </div>
+    <div class="card">
+      <div class="card-tag" style="background:rgba(56,217,169,0.12);color:#38d9a9;">Ethical Frameworks</div>
+      <h3>Approaches to Resource Allocation</h3>
+      <div class="def-grid" style="margin-top:0.5rem;">
+        <div class="def-item" style="grid-template-columns:130px 1fr;padding:0.6rem 0.75rem;"><span class="def-term">Egalitarian</span><span class="def-body">Equal access for all — treat everyone the same regardless of status</span></div>
+        <div class="def-item" style="grid-template-columns:130px 1fr;padding:0.6rem 0.75rem;"><span class="def-term">Utilitarian</span><span class="def-body">Greatest good for greatest number; maximise QALYs (Quality-Adjusted Life Years)</span></div>
+        <div class="def-item" style="grid-template-columns:130px 1fr;padding:0.6rem 0.75rem;"><span class="def-term">Rawlsian</span><span class="def-body">Benefit the least-advantaged members of society most — redistributive justice</span></div>
+        <div class="def-item" style="grid-template-columns:130px 1fr;padding:0.6rem 0.75rem;"><span class="def-term">Libertarian</span><span class="def-body">Market-driven — individuals pay for what they choose; minimal state role</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-tag" style="background:rgba(240,101,149,0.12);color:#f06595;">Triage Principles</div>
+      <h3>Emergency Resource Prioritisation</h3>
+      <ul>
+        <li><strong>Immediate (Red):</strong> Life-threatening, can be saved with immediate intervention</li>
+        <li><strong>Delayed (Yellow):</strong> Serious injury but can wait for treatment</li>
+        <li><strong>Minor (Green):</strong> Walking wounded, can treat later</li>
+        <li><strong>Expectant (Black):</strong> Unlikely to survive even with intervention</li>
+      </ul>
+      <div class="highlight">Exam: Tension between individual duty of care and utilitarian maximisation of lives saved is the central ethical conflict in triage.</div>
+    </div>
+    <div class="card">
+      <div class="card-tag" style="background:rgba(255,212,59,0.12);color:#ffd43b;">Kenya Context</div>
+      <h3>Resource Allocation in Kenya</h3>
+      <ul>
+        <li>Kenya Constitution Art. 43: Health is a right</li>
+        <li>Universal Health Coverage rollout — equity challenges</li>
+        <li>NHIF replaced by Social Health Authority (SHA) — financing fairness debates</li>
+        <li>County vs. National Government health mandates under devolution</li>
+        <li>Drug procurement and stockouts — ethical obligations of health managers</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tab-content" id="tab-endoflife">
+  <div class="cards">
+    <div class="card">
+      <div class="card-tag" style="background:rgba(79,156,249,0.12);color:#4f9cf9;">Core Duties (Art. 36)</div>
+      <h3>Medical Care at End of Life</h3>
+      <ul>
+        <li>Physician must try to cure or improve health when possible</li>
+        <li>When cure is impossible — still obligated to ensure patient welfare</li>
+        <li>Must NOT pursue useless or obstinate (futile) therapeutic actions</li>
+        <li>Must respect patient's explicit wish to refuse life-prolonging treatment</li>
+        <li>Must NEVER intentionally cause death — even if patient requests it</li>
+        <li>Must respond to advance directives unless contrary to good medical practice</li>
+        <li>Sedation in agony: ethical only with refractory symptoms and patient consent</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-tag" style="background:rgba(56,217,169,0.12);color:#38d9a9;">Key Definitions</div>
+      <h3>Concepts to Know for Exams</h3>
+      <div class="def-grid">
+        <div class="def-item" style="grid-template-columns:140px 1fr;padding:0.5rem 0.75rem;"><span class="def-term">Euthanasia</span><span class="def-body">Intentional killing of patient to relieve suffering — absolutely prohibited (Art. 36.3)</span></div>
+        <div class="def-item" style="grid-template-columns:140px 1fr;padding:0.5rem 0.75rem;"><span class="def-term">Palliative Care</span><span class="def-body">Relief of suffering without hastening death — encouraged and supported</span></div>
+        <div class="def-item" style="grid-template-columns:140px 1fr;padding:0.5rem 0.75rem;"><span class="def-term">Medical Futility</span><span class="def-body">Treatment with no expected benefit — must be withheld or withdrawn (Art. 36.2)</span></div>
+        <div class="def-item" style="grid-template-columns:140px 1fr;padding:0.5rem 0.75rem;"><span class="def-term">Advance Directive</span><span class="def-body">Prior written instructions about desired care — binding unless against good practice</span></div>
+        <div class="def-item" style="grid-template-columns:140px 1fr;padding:0.5rem 0.75rem;"><span class="def-term">DNR Order</span><span class="def-body">Do Not Resuscitate — must be documented and respected per patient autonomy</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-tag" style="background:rgba(248,81,73,0.12);color:#f85149;">Ethical Dilemmas</div>
+      <h3>Common Exam Scenarios</h3>
+      <ul>
+        <li>Patient in vegetative state — family wants treatment continued, team says futile</li>
+        <li>Terminally ill patient requests lethal injection</li>
+        <li>Jehovah's Witness refuses blood transfusion on religious grounds</li>
+        <li>Incompetent patient with no family — who decides?</li>
+        <li>Doctor disagrees with patient's advance directive</li>
+      </ul>
+      <div class="highlight">Framework: Apply Autonomy + Beneficence + Non-maleficence + Justice + Kenya legal framework. Always consider patient's advance directives first.</div>
+    </div>
+  </div>
+</div>
+
+<div class="tab-content" id="tab-research">
+  <div class="cards">
+    <div class="card">
+      <div class="card-tag" style="background:rgba(79,156,249,0.12);color:#4f9cf9;">Principles (Art. 59)</div>
+      <h3>Medical Research Ethics</h3>
+      <ul>
+        <li>Research on humans only when scientific progress not possible otherwise</li>
+        <li>Take all precautions to preserve physical and mental integrity</li>
+        <li>Special protection for <strong>vulnerable groups</strong></li>
+        <li>Participant welfare prevails over interests of science and society</li>
+        <li>Explicit consent always required with full information</li>
+        <li>Right to withdraw freely at any time without penalty</li>
+        <li>Researcher must publish all results — favourable or not</li>
+        <li>Data manipulation or concealment is unethical</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-tag" style="background:rgba(56,217,169,0.12);color:#38d9a9;">Kenya Governance</div>
+      <h3>Research Regulatory Framework</h3>
+      <ul>
+        <li><strong>NACOSTI:</strong> National Commission for Science, Technology and Innovation</li>
+        <li><strong>KEMRI:</strong> Kenya Medical Research Institute — institutional review</li>
+        <li><strong>IRBs/RECs:</strong> Must approve all research involving human subjects</li>
+        <li>Science and Technology Act, CAP 250</li>
+        <li>Pharmacy and Poisons Board for clinical trials</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-tag" style="background:rgba(240,101,149,0.12);color:#f06595;">Research Misconduct</div>
+      <h3>What is Prohibited (Art. 64)</h3>
+      <ul>
+        <li>Falsifying or fabricating data</li>
+        <li>Plagiarism of others' research</li>
+        <li>Ghost authorship — being listed as author without substantial contribution</li>
+        <li>Concealing unfavourable results</li>
+        <li>Undisclosed funding or conflicts of interest</li>
+        <li>Creating embryos solely for research — unethical (Art. 59.5)</li>
+        <li>Nuclear transfer and cloning techniques</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-tag" style="background:rgba(255,212,59,0.12);color:#ffd43b;">Pharma Industry (Art. 23)</div>
+      <h3>Industry-Sponsored Research</h3>
+      <ul>
+        <li>Doctor must have full freedom for publication regardless of sponsor's preference</li>
+        <li>Must declare all conflicts of interest publicly</li>
+        <li>Cannot accept gifts for prescribing specific medications</li>
+        <li>Sponsorship must be transparently disclosed</li>
+        <li>Independence of research content must be guaranteed</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tab-content" id="tab-objection">
+  <div class="cards">
+    <div class="card">
+      <div class="card-tag" style="background:rgba(79,156,249,0.12);color:#4f9cf9;">Definition (Art. 32)</div>
+      <h3>Conscientious Objection</h3>
+      <p>A doctor's refusal — based on ethical, moral, or religious convictions — to perform a legally required act that deeply conflicts with their conscience.</p>
+      <ul style="margin-top:0.75rem;">
+        <li>Must have genuine moral basis — not mere convenience or opportunism (Art. 33.1)</li>
+        <li>Only individual objection is valid — no collective or institutional objection permitted</li>
+        <li>Objector must inform the responsible healthcare authority</li>
+        <li>Applies to the action, NOT to the person making the request</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-tag" style="background:rgba(248,81,73,0.12);color:#f85149;">Limits and Obligations (Art. 34)</div>
+      <h3>What an Objector Must Still Do</h3>
+      <ul>
+        <li>Inform the patient in understandable terms of the objection (Art. 34.2)</li>
+        <li>In emergencies — must provide care even if related to contested act (Art. 34.3)</li>
+        <li>Cannot discriminate based on age, race, sex, lifestyle, ideology, or religion</li>
+        <li>Cannot derive benefits OR suffer penalties for invoking objection (Art. 35)</li>
+        <li>If refusing abortion: must still inform patient of their legal rights (Art. 55.2)</li>
+        <li>Must ensure patient can access care through another provider</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-tag" style="background:rgba(56,217,169,0.12);color:#38d9a9;">Kenya Context</div>
+      <h3>C.O. in Kenyan Healthcare</h3>
+      <ul>
+        <li>Most common: reproductive health services (abortion where legally permitted)</li>
+        <li>Kenya Constitution Art. 26(4): Abortion only in narrow legal circumstances</li>
+        <li>Pharmacists objecting to dispensing emergency contraception</li>
+        <li>Doctors objecting to voluntary surgical contraception</li>
+        <li>Religious healthcare institutions and referral obligations</li>
+        <li>Balance between professional freedom and patient access to care</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tab-content" id="tab-reproduction">
+  <div class="cards">
+    <div class="card">
+      <div class="card-tag" style="background:rgba(79,156,249,0.12);color:#4f9cf9;">Core Principle (Art. 51)</div>
+      <h3>Human Reproduction Ethics</h3>
+      <p>The human being is an end in itself at all stages of the life cycle from conception to death. Doctors must safeguard dignity and integrity of persons under their care at all times.</p>
+      <ul style="margin-top:0.5rem;">
+        <li>Physician must not interfere ideologically in reproductive choices (Art. 52)</li>
+        <li>Must inform patients about all benefits and rights related to procreation</li>
+        <li>STI patients must be informed of obligation to notify partners (Art. 51.5)</li>
+        <li>If patient refuses to notify partner, doctor has duty to protect partner's health</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-tag" style="background:rgba(56,217,169,0.12);color:#38d9a9;">ART Ethics (Art. 56)</div>
+      <h3>Assisted Reproductive Technology</h3>
+      <ul>
+        <li>ART indicated only after exhausting natural procedures</li>
+        <li>Not recommended after natural menopause; never after age 55</li>
+        <li>Physician should not fertilise more eggs than planned for implantation</li>
+        <li>Genetic manipulation without therapeutic purpose: unethical (Art. 53.1)</li>
+        <li>Human cloning: prohibited absolutely (Art. 53.2)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-tag" style="background:rgba(240,101,149,0.12);color:#f06595;">Abortion Ethics (Art. 55)</div>
+      <h3>Termination of Pregnancy</h3>
+      <ul>
+        <li>If woman chooses to terminate: doctor must still inform her of social benefits of continuing and risks of termination</li>
+        <li>Conscientious objector: must still inform patient of their legal rights</li>
+        <li>Physician must not deny, hide, or manipulate information to influence the mother's decision</li>
+        <li>Kenya: Art. 26(4) Constitution — abortion permitted to protect life/health of mother or as permitted by written law</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-tag" style="background:rgba(218,119,242,0.12);color:#da77f2;">Organ Transplant (Art. 48–50)</div>
+      <h3>Transplant Ethics</h3>
+      <ul>
+        <li>Encourage and promote organ donation while preserving donor anonymity</li>
+        <li>Organs and tissues must NOT be traded commercially</li>
+        <li>Must verify death of donor before harvesting</li>
+        <li>Living donors: risk-benefit proportion must be reasonable; no coercion</li>
+        <li>Facial transplant: only for serious health or functionality problem, never purely aesthetic</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="sec-header" id="chapters">
+  <div class="sec-num" style="background:rgba(255,212,59,0.15);color:#ffd43b;">04</div>
+  <div><h2>Code of Medical Ethics — All 21 Chapters</h2><p>Key articles and exam-relevant content from your core reading (OMC 2011)</p></div>
+</div>
+<div class="article-grid">
+  <div class="art-item" style="border-left:3px solid #4f9cf9;"><div class="art-num">Chapter I</div><h4>Definition and Scope</h4><p>Medical ethics = ethical principles and rules guiding physician conduct. Applies to ALL doctors in ALL modes of practice. Non-compliance leads to disciplinary action under General Statutes of the Medical Association.</p></div>
+  <div class="art-item" style="border-left:3px solid #38d9a9;"><div class="art-num">Chapter II</div><h4>General Principles</h4><p>Respect for human life, dignity, and healthcare. Non-discrimination. Patient's health is the primary loyalty. No intentional harm. All doctors must provide emergency care regardless of specialty. Continuing medical education is an ethical duty and right.</p></div>
+  <div class="art-item" style="border-left:3px solid #f06595;"><div class="art-num">Chapter III</div><h4>Doctors' Relations with Patients</h4><p>Build full trust and confidence. Respect patient convictions. Right to choose or change doctor. Informed consent (Art. 12). Minors and capacity rules (Art. 13–14). Truthful information delivery (Art. 15). Honest reporting of errors (Art. 17). Medical record duties (Art. 19).</p></div>
+  <div class="art-item" style="border-left:3px solid #ffd43b;"><div class="art-num">Chapter IV</div><h4>Quality of Care</h4><p>Duty to provide quality care. No defensive medicine (Art. 21.2). Freedom of prescription. No gifts from pharma for prescriptions (Art. 23.2). No productivity-based remuneration threatening care quality. Doctor has freedom of prescription guided by scientific evidence.</p></div>
+  <div class="art-item" style="border-left:3px solid #da77f2;"><div class="art-num">Chapter V</div><h4>Medical Secrecy</h4><p>Confidentiality is a pillar of doctor-patient trust. Covers all patient information. Exceptions listed (notifiable disease, abuse, legal duty, danger to others). Death does not end confidentiality obligation. Includes electronic records.</p></div>
+  <div class="art-item" style="border-left:3px solid #4f9cf9;"><div class="art-num">Chapter VI</div><h4>Conscientious Objection</h4><p>Personal, morally-grounded refusal by individual physicians only. No collective or institutional objection. Must still provide emergency care. No discrimination against person requesting the refused act. No penalties or benefits for objection.</p></div>
+  <div class="art-item" style="border-left:3px solid #f85149;"><div class="art-num">Chapter VII</div><h4>Health Care at End of Life</h4><p>Avoid futile treatment. Respect advance directives. Never intentionally cause death — even if requested. Palliative sedation permitted only with symptoms refractory to treatment and patient consent. Duty to complete death certificate.</p></div>
+  <div class="art-item" style="border-left:3px solid #38d9a9;"><div class="art-num">Chapter VIII</div><h4>Relations with Colleagues</h4><p>Fellowship is a primary duty (after patient rights). No unfair criticism of colleagues. Share knowledge for patient benefit. Report ethical violations discreetly to the College. Teamwork does NOT eliminate individual ethical responsibility.</p></div>
+  <div class="art-item" style="border-left:3px solid #ffd43b;"><div class="art-num">Chapter IX</div><h4>Relations with Medical Colleges</h4><p>Duty to respond to College requests. Participate in collegiate activities. Directors maintain ethical unity. Defend harmed members. Act ex officio on serious violations. Preserve confidentiality of ethics proceedings.</p></div>
+  <div class="art-item" style="border-left:3px solid #da77f2;"><div class="art-num">Chapter X</div><h4>Work in Health Institutions</h4><p>Ensure quality, adequacy, ethical compliance. Report deficiencies to management, College, or health authorities. Professional freedom must be respected. No independence-limiting incentives. Doctors in management act for common good and equity.</p></div>
+  <div class="art-item" style="border-left:3px solid #4f9cf9;"><div class="art-num">Chapter XI</div><h4>Organ Transplants</h4><p>Promote donation with anonymity. No organ trading. Verify donor death before harvesting. Living donor: risk-benefit proportion must be reasonable; no coercion. Facial transplant only for serious health/functionality problems.</p></div>
+  <div class="art-item" style="border-left:3px solid #f06595;"><div class="art-num">Chapter XII</div><h4>Human Reproduction</h4><p>Human dignity at all life stages. No ideological interference in reproductive choices. STI notification obligation. Not technically feasible does not equal ethically acceptable. ART limits. Prohibition on cloning and non-therapeutic embryo manipulation.</p></div>
+  <div class="art-item" style="border-left:3px solid #38d9a9;"><div class="art-num">Chapter XIII</div><h4>Genetic Testing</h4><p>Consent-based testing only. Anonymise research samples. Doctor is custodian of genetic data — patient owns it. No discriminatory use. DNA identification from reliable genomic regions. Family genetic information implications.</p></div>
+  <div class="art-item" style="border-left:3px solid #f85149;"><div class="art-num">Chapter XIV</div><h4>Medical Research on Humans</h4><p>Research as social good — promoted but strictly regulated. Participant welfare over science. Full informed consent mandatory. Right to withdraw at any time. Publish all results. No embryo creation for research. No nuclear transfer or cloning.</p></div>
+  <div class="art-item" style="border-left:3px solid #ffd43b;"><div class="art-num">Chapter XV</div><h4>Torture and Vexation</h4><p>Never participate in, second, or admit acts of torture or ill-treatment regardless of arguments invoked. Obligated to report to competent authority. Must not engage in any mind or consciousness manipulation.</p></div>
+  <div class="art-item" style="border-left:3px solid #da77f2;"><div class="art-num">Chapter XVI</div><h4>Sports Doping</h4><p>Fraudulent performance enhancement is unethical. Must inform athletes of doping harms. Report known doping by colleagues. Fitness assessments based on health and physical/mental integrity criteria.</p></div>
+  <div class="art-item" style="border-left:3px solid #4f9cf9;"><div class="art-num">Chapter XVII</div><h4>Medical Experts</h4><p>Duty to assist courts and public administration. Expert role incompatible with prior treating physician role for same patient. Preserve confidentiality except as legally required. Maintain patient privacy during expert examination.</p></div>
+  <div class="art-item" style="border-left:3px solid #38d9a9;"><div class="art-num">Chapter XVIII</div><h4>Medical Education</h4><p>Students must know and practice this Code. Teachers model ethical conduct in every medical act. Trainees supervised. Minimize patient inconvenience in teaching. Respect student dignity. Every medical act has an ethical component.</p></div>
+  <div class="art-item" style="border-left:3px solid #f06595;"><div class="art-num">Chapter XIX</div><h4>Professional Publications</h4><p>Communicate findings to professional circles first. Never identify patients in publications. Prohibit: data fabrication, plagiarism, ghost authorship, undisclosed funding, repetitive publications, premature sensational claims.</p></div>
+  <div class="art-item" style="border-left:3px solid #ffd43b;"><div class="art-num">Chapter XX</div><h4>Medical Advertising</h4><p>Advertising permitted but must be objective, truthful, and prudent. Must not raise false hopes. Identify specialty in ads. No deceptive healing claims. No advertising demeaning the medical profession.</p></div>
+  <div class="art-item" style="border-left:3px solid #da77f2;"><div class="art-num">Chapter XXI</div><h4>Economy and Fees</h4><p>Medicine is not primarily for profit. Fees must be worthy, not abusive. Dichotomous fees and performance-based prescribing prohibited. No gifts for prescriptions. No direct drug sales to patients. Fee courtesy to colleagues is Hippocratic tradition.</p></div>
+</div>
+
+<div class="sec-header" id="kenya">
+  <div class="sec-num" style="background:rgba(56,217,169,0.15);color:#38d9a9;">05</div>
+  <div><h2>Kenya Legal and Policy Framework</h2><p>Laws, regulations, and institutions governing health professionals in Kenya</p></div>
+</div>
+<div class="kenya-box">
+  <div class="k-title">Kenya Constitution 2010 — Key Health Provisions</div>
+  <h4>Constitutional Rights and Health</h4>
+  <p><strong>Article 43:</strong> Every person has the right to the highest attainable standard of health, including reproductive health care. The State must achieve the progressive realisation of this right.</p>
+  <p><strong>Article 26:</strong> Right to life — begins at conception. Abortion permitted where: (a) emergency treatment needed by trained health professional, (b) life or health of mother in danger, or (c) permitted by any other written law.</p>
+  <p><strong>Article 31:</strong> Right to privacy — includes not having information about one's health disclosed without consent. Forms the constitutional basis for medical confidentiality.</p>
+  <p><strong>Article 44:</strong> Right to use language of choice — relevant to informed consent in local languages and accessibility of health information.</p>
+</div>
+<div class="cards">
+  <div class="card">
+    <div class="card-tag" style="background:rgba(56,217,169,0.12);color:#38d9a9;">Key Legislation</div>
+    <h3>Health Acts and Statutes</h3>
+    <ul>
+      <li><strong>Health Act, 2017:</strong> Consolidates health services; patient rights and obligations; community health</li>
+      <li><strong>Medical Practitioners and Dentists Act (CAP 253):</strong> Registration, licensing, professional conduct</li>
+      <li><strong>Pharmacy and Poisons Act (CAP 244):</strong> Regulates pharmacy practice and drug control</li>
+      <li><strong>Public Health Act (CAP 242):</strong> Notifiable diseases, quarantine, environmental health</li>
+      <li><strong>Nurses Act (CAP 257):</strong> Nursing Council of Kenya regulation</li>
+      <li><strong>Mental Health Act (amended 2022):</strong> Rights of persons with mental disorders</li>
+      <li><strong>HIV and AIDS Prevention and Control Act (2006):</strong> Testing, disclosure, partner notification</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-tag" style="background:rgba(79,156,249,0.12);color:#4f9cf9;">Regulatory Bodies</div>
+    <h3>Professional Regulatory Institutions</h3>
+    <ul>
+      <li><strong>KMPDC:</strong> Kenya Medical Practitioners and Dentists Council — registers, licenses, disciplines doctors</li>
+      <li><strong>Pharmacy and Poisons Board (PPB):</strong> Regulates pharmacy practice and medicines</li>
+      <li><strong>Nursing Council of Kenya:</strong> Nursing profession regulation</li>
+      <li><strong>KEMRI:</strong> Medical research and ethical oversight</li>
+      <li><strong>NACOSTI:</strong> Science, technology, and innovation oversight</li>
+      <li><strong>Kenya Bio-Safety Authority:</strong> Regulates genetically modified organisms</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-tag" style="background:rgba(240,101,149,0.12);color:#f06595;">Patient Rights (Health Act 2017)</div>
+    <h3>Patients' Rights in Kenya</h3>
+    <ul>
+      <li>Right to emergency care without precondition</li>
+      <li>Right to be treated with dignity and respect</li>
+      <li>Right to information about their condition</li>
+      <li>Right to give informed consent before any procedure</li>
+      <li>Right to privacy and confidentiality of health information</li>
+      <li>Right to refuse treatment</li>
+      <li>Right to a second opinion</li>
+      <li>Right to access their own health records</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-tag" style="background:rgba(218,119,242,0.12);color:#da77f2;">Public Health Law</div>
+    <h3>Public Health Act (CAP 242) Highlights</h3>
+    <ul>
+      <li>Notifiable diseases — mandatory reporting to Director of Medical Services</li>
+      <li>Quarantine and isolation powers during outbreaks</li>
+      <li>Vaccination obligations for public health protection</li>
+      <li>Environmental health standards and enforcement</li>
+      <li>Food safety and hygiene regulations</li>
+    </ul>
+    <div class="highlight">Exam key: Tension between individual confidentiality and mandatory public health reporting (e.g. HIV, TB) is a central ethical conflict in Kenya.</div>
+  </div>
+</div>
+
+<div class="sec-header" id="glossary">
+  <div class="sec-num" style="background:rgba(218,119,242,0.15);color:#da77f2;">06</div>
+  <div><h2>Key Definitions and Glossary</h2><p>Must-know vocabulary for your exams</p></div>
+</div>
+<div class="def-grid">
+  <div class="def-item"><span class="def-term">Bioethics</span><span class="def-body">The systematic study of ethical dimensions of biological and health sciences, their practice, and applications in clinical, research, and policy contexts.</span></div>
+  <div class="def-item"><span class="def-term">Medical Ethics</span><span class="def-body">The set of ethical principles and rules that inspire and guide the professional conduct of physicians (Art. 1, Code of Medical Ethics).</span></div>
+  <div class="def-item"><span class="def-term">Autonomy</span><span class="def-body">The patient's right to make their own informed healthcare decisions without coercion. Requires capacity, adequate information, and voluntariness.</span></div>
+  <div class="def-item"><span class="def-term">Beneficence</span><span class="def-body">The ethical duty to act in the best interest of the patient; to actively promote their wellbeing and health.</span></div>
+  <div class="def-item"><span class="def-term">Non-maleficence</span><span class="def-body">"Primum non nocere" — First, do no harm. Obligation to avoid causing unnecessary harm, injury, or suffering to patients.</span></div>
+  <div class="def-item"><span class="def-term">Justice</span><span class="def-body">Fair distribution of healthcare benefits, risks, and costs. Includes equity in access, treating equals equally, and fair resource allocation.</span></div>
+  <div class="def-item"><span class="def-term">Informed Consent</span><span class="def-body">A patient's voluntary, competent agreement to a medical procedure after receiving adequate and comprehensible information about it — a process, not a form.</span></div>
+  <div class="def-item"><span class="def-term">Confidentiality</span><span class="def-body">The obligation of healthcare providers to keep patient information private and not disclose it to third parties without consent, except in legally defined exceptions.</span></div>
+  <div class="def-item"><span class="def-term">Paternalism</span><span class="def-body">When a healthcare provider makes decisions on behalf of a patient believing they know best, overriding patient autonomy. Acceptable only in emergencies with incapacitated patients.</span></div>
+  <div class="def-item"><span class="def-term">Advance Directive</span><span class="def-body">A legal document in which a patient specifies their healthcare wishes in advance, to be followed if they become incapacitated. The doctor must respond to these (Art. 36.4).</span></div>
+  <div class="def-item"><span class="def-term">Euthanasia</span><span class="def-body">The intentional termination of a patient's life to relieve suffering. Strictly prohibited under the Code of Medical Ethics (Art. 36.3) and Kenyan law.</span></div>
+  <div class="def-item"><span class="def-term">Medical Futility</span><span class="def-body">Treatment that provides no expected benefit to the patient. The Code (Art. 36.2) requires doctors not to pursue useless or obstinate therapeutic actions.</span></div>
+  <div class="def-item"><span class="def-term">QALY</span><span class="def-body">Quality-Adjusted Life Year — a metric combining quality and quantity of life gained from a treatment, used in resource allocation decisions and health economics.</span></div>
+  <div class="def-item"><span class="def-term">Equipoise</span><span class="def-body">Genuine uncertainty about which arm of a clinical trial is superior — required as the ethical basis for randomising participants in research.</span></div>
+  <div class="def-item"><span class="def-term">Deontology</span><span class="def-body">Duty-based ethical theory (Kant): actions are right or wrong in themselves, regardless of consequences. Underlies medical duties like truth-telling and consent.</span></div>
+  <div class="def-item"><span class="def-term">Utilitarianism</span><span class="def-body">Consequentialist theory (Bentham/Mill): the right action maximises overall wellbeing for the greatest number. Applied in public health policy and triage decisions.</span></div>
+  <div class="def-item"><span class="def-term">Defensive Medicine</span><span class="def-body">Ordering tests primarily to protect against malpractice suits rather than for clinical need. Explicitly prohibited — contrary to medical ethics (Art. 21.2).</span></div>
+  <div class="def-item"><span class="def-term">Fellowship</span><span class="def-body">The professional duty of solidarity and mutual respect among physicians (Art. 37). Only patient rights take precedence over the duty of fellowship.</span></div>
+</div>
+
+<div class="sec-header" id="cases">
+  <div class="sec-num" style="background:rgba(240,101,149,0.15);color:#f06595;">07</div>
+  <div><h2>Ethical Case Scenarios</h2><p>Apply your knowledge — key for exam case study questions</p></div>
+</div>
+
+<div class="case-box">
+  <div class="case-label">Scenario 1</div>
+  <h4>The Incompetent Patient and Family Conflict</h4>
+  <p>A 78-year-old patient with advanced dementia is admitted with pneumonia. The patient cannot give consent. Their adult child says "do everything possible," but the clinical team believes aggressive treatment is futile and will cause suffering.</p>
+  <p><strong>Analysis:</strong> Apply Art. 36 (no futile treatment) and Art. 13 (proxy consent). Balance beneficence vs. non-maleficence. Seek advance directives if any exist. If none: consider what the patient would have wanted, consult an ethics committee. Apply Kenya Health Act 2017 patient rights principles.</p>
+  <div class="issues"><span class="issue-tag">Autonomy</span><span class="issue-tag">Beneficence</span><span class="issue-tag">Medical Futility</span><span class="issue-tag">Proxy Consent</span><span class="issue-tag">End of Life</span></div>
+</div>
+
+<div class="case-box">
+  <div class="case-label">Scenario 2</div>
+  <h4>HIV Status Disclosure — Partner Notification</h4>
+  <p>A laboratory technologist discovers a patient is HIV positive. The patient refuses to inform their partner and requests confidentiality. The partner is regularly attending the same facility.</p>
+  <p><strong>Analysis:</strong> Art. 30(c): silence causing injury to others — exception to confidentiality. Art. 51.5: doctor must inform patient of obligation to notify partner; if they refuse, doctor has duty to disclose to protect partner's health. Apply Kenya HIV and AIDS Prevention and Control Act 2006. Balance individual privacy vs. third-party harm.</p>
+  <div class="issues"><span class="issue-tag">Confidentiality</span><span class="issue-tag">Public Health</span><span class="issue-tag">Harm to Others</span><span class="issue-tag">HIV Law</span><span class="issue-tag">Duty to Warn</span></div>
+</div>
+
+<div class="case-box">
+  <div class="case-label">Scenario 3</div>
+  <h4>Research Consent in a Rural Community</h4>
+  <p>Researchers want to collect blood samples in a rural Kenyan community for a genetics study. Community elders give collective permission. Individual participants are told little because "the elders have agreed."</p>
+  <p><strong>Analysis:</strong> Art. 59.3: individual informed consent is mandatory and cannot be replaced by community consent. Special vulnerability of rural populations. NACOSTI and KEMRI ethical guidelines apply. Nuremberg Code: voluntary consent is "absolutely essential" for each individual.</p>
+  <div class="issues"><span class="issue-tag">Research Ethics</span><span class="issue-tag">Individual Consent</span><span class="issue-tag">Vulnerable Groups</span><span class="issue-tag">Community vs. Individual</span></div>
+</div>
+
+<div class="case-box">
+  <div class="case-label">Scenario 4</div>
+  <h4>Genetic Test Result — Family Implications</h4>
+  <p>A patient undergoes genetic testing and is found to carry the BRCA1 mutation, significantly increasing breast and ovarian cancer risk. The patient refuses to inform their sisters who may share the same mutation.</p>
+  <p><strong>Analysis:</strong> Art. 58.7: DNA information is shared with family members. Classic tension between patient confidentiality and duty to warn relatives at risk. Consider ethics committee guidance. No clear legal right of relatives to know in Kenya — ethical judgment required.</p>
+  <div class="issues"><span class="issue-tag">Genetic Privacy</span><span class="issue-tag">Confidentiality</span><span class="issue-tag">Family Rights</span><span class="issue-tag">Duty to Warn</span></div>
+</div>
+
+<div class="case-box">
+  <div class="case-label">Scenario 5</div>
+  <h4>Organ Allocation — Scarce ICU Beds</h4>
+  <p>During a disease outbreak, 3 ICU beds remain. 5 patients urgently need them: a 30-year-old single parent, a 70-year-old retired teacher, a 45-year-old surgeon, an uninsured farm worker, and a minor with pre-existing conditions.</p>
+  <p><strong>Analysis:</strong> Utilitarian approach: maximise lives or life-years saved. Egalitarian: lottery or first-come-first-served. Justice principle: no discrimination by occupation, wealth, or age. Apply Kenya crisis standards of care. Art. 5.2: physician must treat all patients without discrimination.</p>
+  <div class="issues"><span class="issue-tag">Justice</span><span class="issue-tag">Resource Allocation</span><span class="issue-tag">Triage</span><span class="issue-tag">Utilitarianism</span><span class="issue-tag">Non-discrimination</span></div>
+</div>
+
+<div class="sec-header" id="quiz">
+  <div class="sec-num" style="background:rgba(79,156,249,0.15);color:#4f9cf9;">08</div>
+  <div><h2>Self-Assessment Quiz</h2><p>Test your exam readiness — click an option to check your answer</p></div>
+</div>
+
+<div class="score-display">
+  <div><div class="score-num" id="score-display">0 / 0</div><p style="font-size:13px;color:var(--text2);">Questions answered</p></div>
+  <div><div class="score-num" id="pct-display">–</div><p style="font-size:13px;color:var(--text2);">Score percentage</p></div>
+  <button class="btn" onclick="resetQuiz()">Restart Quiz</button>
+</div>
+<div id="quiz-container"></div>
+<div style="text-align:center; padding: 30px 0;">
+  <a href="questions.html" style="
+    display: inline-block;
+    padding: 12px 28px;
+    color: #2e7d32;
+    border: 2px solid #2e7d32;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.2em;
+    text-decoration: none;
+  ">
+    Test Your Knowledge →
+  </a>
+</div>
+
+</div>
+
+<footer>
+  <p>MMA 411 · Bioethics and Law · Comprehensive Study Notes</p>
+  <p style="margin-top:0.3rem;">Based on the Code of Medical Ethics (OMC 2011), Bioethics textbook, and Kenya legal framework. Course objectives per course outline: Moral and Ethical Reasoning Among Health Professionals in Kenya.</p>
+</footer>
+
+<script>
+const questions = [
+  { q: "Which article of the Code of Medical Ethics states that 'informing the patient is not a bureaucratic act but a clinical act'?", opts: ["Article 12", "Article 15", "Article 16", "Article 19"], ans: 2, exp: "Article 16 explicitly states that informing the patient is a clinical act — not administrative — and must be done by the physician responsible for the care process after reaching a precise clinical judgment." },
+  { q: "According to the Code of Medical Ethics, which of the following is a valid exception to medical secrecy?", opts: ["A colleague asks about the patient out of curiosity", "The patient's employer requests information", "A notifiable infectious disease is diagnosed", "The patient's adult sibling calls the clinic"], ans: 2, exp: "Article 30(a): Notifiable diseases are a listed exception to professional secrecy. Disclosure to employers, curious colleagues, or relatives without patient consent is not permitted." },
+  { q: "The ethical principle that requires physicians to always act in the best interest of the patient is called:", opts: ["Autonomy", "Non-maleficence", "Beneficence", "Justice"], ans: 2, exp: "Beneficence means actively doing good and promoting patient wellbeing. Non-maleficence means avoiding harm. Autonomy respects patient choice. Justice concerns fair distribution of resources." },
+  { q: "Under the Code of Medical Ethics, conscientious objection can be validly invoked by:", opts: ["An entire hospital department collectively", "An individual physician based on genuine moral or religious grounds", "A physician who finds the procedure inconvenient", "A hospital administration to reduce costs"], ans: 1, exp: "Article 32.2: Only INDIVIDUAL conscientious objection is recognised. No collective or institutional objection is admissible. Article 33.1: It must have genuine moral basis — not mere opportunism or convenience." },
+  { q: "A patient refuses a recommended blood transfusion for religious reasons. The correct approach is:", opts: ["Override the patient's decision to save their life", "Respect the refusal, document it, inform of consequences, and seek alternatives", "Transfer the patient immediately without explanation", "Report the patient to family to override the decision"], ans: 1, exp: "Article 12.2: The physician must respect the patient's refusal, inform them accurately of consequences, and document the refusal. Patient autonomy — including the right to refuse — is protected unless the patient lacks decision-making capacity." },
+  { q: "Which foundational document was the FIRST to require voluntary informed consent as 'absolutely essential' in research?", opts: ["Declaration of Helsinki (1964)", "Belmont Report (1979)", "Nuremberg Code (1947)", "Hippocratic Oath"], ans: 2, exp: "The Nuremberg Code (1947), produced after the Nazi doctors' trials, was the first international statement making voluntary informed consent in research 'absolutely essential.' The Declaration of Helsinki built upon this foundation in 1964." },
+  { q: "According to Article 36 of the Code, what is the doctor's position on euthanasia?", opts: ["It is permitted if the patient expressly requests it", "It is permitted only in terminal illness with ethics committee approval", "The doctor shall NEVER intentionally cause the death of any patient, even if expressly requested", "It is permitted with approval of the medical ethics committee"], ans: 2, exp: "Article 36.3 is unambiguous: 'The doctor shall never intentionally cause the death of any patient, even if expressly requested by the latter.' This applies regardless of circumstances or how the request is framed." },
+  { q: "The concept of 'defensive medicine' in the Code of Medical Ethics is:", opts: ["Encouraged as a quality of care standard", "Neutral — neither encouraged nor discouraged", "Prohibited — it is contrary to medical ethics", "Required by law in most jurisdictions"], ans: 2, exp: "Article 21.2 explicitly states: 'Defensive medicine is contrary to medical ethics.' Complementary examinations should not be performed routinely, indiscriminately, or abusively — only when clinically justified." },
+  { q: "Under the Kenya Constitution 2010, abortion is permitted when:", opts: ["A woman requests it before 12 weeks gestation", "The life or health of the mother is in danger OR as permitted by written law", "A physician believes the pregnancy is undesired", "The family provides written consent"], ans: 1, exp: "Kenya Constitution Article 26(4): Abortion is permitted when a trained health professional determines emergency treatment is needed, when the life or health of the mother is in danger, or as permitted by any other written law." },
+  { q: "In research ethics, what is 'equipoise'?", opts: ["Equal distribution of research funds between groups", "Genuine uncertainty about which treatment arm is superior — ethical basis for randomisation", "Balancing the number of male and female research participants", "The requirement for equal-sized control and experimental groups"], ans: 1, exp: "Clinical equipoise means the research community genuinely does not know which arm of a trial is superior. Without equipoise, randomising patients would be unethical because you would knowingly deny some patients the better treatment." },
+  { q: "Which body is responsible for registering and licensing medical doctors in Kenya?", opts: ["Kenya Medical Research Institute (KEMRI)", "Kenya Medical Practitioners and Dentists Council (KMPDC)", "NACOSTI", "Ministry of Health"], ans: 1, exp: "The Kenya Medical Practitioners and Dentists Council (KMPDC) is the statutory body established under the Medical Practitioners and Dentists Act (CAP 253) responsible for registration, licensing, and discipline of medical doctors in Kenya." },
+  { q: "A patient dies. Their medical records may be accessed by:", opts: ["Any health professional requesting them for research", "The media for public interest reporting", "Family members with family ties, unless the patient expressly forbade it", "The employer who paid the medical bills"], ans: 2, exp: "Article 19.6: Access to medical records of deceased patients is allowed only to people with family ties with the patient, PROVIDED the patient did not expressly forbid it. Confidentiality extends beyond the patient's death." },
+  { q: "The Belmont Report (1979) established which set of principles for research ethics?", opts: ["Autonomy, Beneficence, Justice", "Respect for Persons, Beneficence, Justice", "Non-maleficence, Beneficence, Fairness", "Consent, Privacy, Transparency"], ans: 1, exp: "The Belmont Report's three principles are: Respect for Persons (autonomy and protection of persons with diminished autonomy), Beneficence (maximise benefits, minimise harms), and Justice (fair distribution of research burdens and benefits)." },
+  { q: "According to Article 58.7, information revealed by DNA analysis:", opts: ["Belongs exclusively to the patient whose sample it came from", "Is the intellectual property of the testing laboratory", "Is not only owned by the donor but is shared with family members", "Can be freely disclosed once the patient is deceased"], ans: 2, exp: "Article 58.7 states DNA information 'is not only owned by the donor of the sample, but it is shared with other family members.' This creates unique ethical obligations around genetic privacy and potential duty to warn relatives at risk." },
+  { q: "Utilitarianism holds that the right action is one that:", opts: ["Follows established rules and duties regardless of outcomes", "Builds virtuous character in the moral agent", "Produces the greatest good for the greatest number", "Respects the individual's rights above all else"], ans: 2, exp: "Utilitarianism (Bentham, Mill) is a consequentialist theory: an action is right if it produces the best overall outcome — maximising wellbeing for the greatest number. It is widely applied in public health policy, resource allocation, and triage decisions." }
+];
+
+let answered = {}, correct = 0;
+
+function renderQuiz() {
+  const c = document.getElementById('quiz-container');
+  c.innerHTML = '';
+  questions.forEach((q, i) => {
+    const d = document.createElement('div');
+    d.className = 'q-item';
+    d.innerHTML = `<div class="q-text">Q${i+1}. ${q.q}</div><div class="q-opts">${q.opts.map((o,j) => `<div class="q-opt" onclick="answer(${i},${j})" id="opt-${i}-${j}">${String.fromCharCode(65+j)}. ${o}</div>`).join('')}</div><div class="q-explain" id="exp-${i}">${q.exp}</div>`;
+    c.appendChild(d);
+  });
+  updateScore();
+}
+
+function answer(qi, oi) {
+  if (answered[qi] !== undefined) return;
+  answered[qi] = oi;
+  const q = questions[qi];
+  document.querySelectorAll(`[id^="opt-${qi}-"]`).forEach((el, j) => {
+    if (j === q.ans) el.classList.add(oi === q.ans ? 'correct' : 'reveal-correct');
+    else if (j === oi && oi !== q.ans) el.classList.add('wrong');
+  });
+  if (oi === q.ans) correct++;
+  document.getElementById(`exp-${qi}`).style.display = 'block';
+  updateScore();
+}
+
+function updateScore() {
+  const t = Object.keys(answered).length;
+  document.getElementById('score-display').textContent = `${correct} / ${t}`;
+  document.getElementById('pct-display').textContent = t > 0 ? `${Math.round((correct/t)*100)}%` : '–';
+}
+
+function resetQuiz() { answered = {}; correct = 0; renderQuiz(); }
+
+function showTab(id, el) {
+  document.querySelectorAll('.tab-content').forEach(e => e.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(e => e.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  el.classList.add('active');
+}
+
+let sectionsVisited = new Set();
+function updateProgressBar() {
+  const pct = Math.min(100, Math.round((sectionsVisited.size / 8) * 100));
+  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('prog-text').textContent = pct + '% complete';
+  try { localStorage.setItem('mma411_prog', JSON.stringify([...sectionsVisited])); } catch(e) {}
+}
+function resetProgress() { sectionsVisited = new Set(); try { localStorage.removeItem('mma411_prog'); } catch(e) {} updateProgressBar(); }
+
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting && e.target.id) { sectionsVisited.add(e.target.id); updateProgressBar(); } });
+}, { threshold: 0.3 });
+document.querySelectorAll('[id]').forEach(el => obs.observe(el));
+
+try { const s = JSON.parse(localStorage.getItem('mma411_prog') || '[]'); s.forEach(x => sectionsVisited.add(x)); updateProgressBar(); } catch(e) {}
+
+renderQuiz();
+</script>
+</body>
+</html>
